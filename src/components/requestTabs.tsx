@@ -14,8 +14,8 @@ interface RequestTabsProps {
   onUpdateKeyValuePairs: (
     section: "params" | "headers" | "auth",
     id: string,
-    field: "key" | "value",
-    value: string
+    field: "key" | "value" | "enabled",
+    value: string | boolean
   ) => void;
   onAddKeyValuePair: (section: "params" | "headers" | "auth") => void;
   onRemoveKeyValuePair: (
@@ -31,8 +31,6 @@ export const RequestTabs: React.FC<RequestTabsProps> = ({
   jsonError,
   onTabChange,
   onUpdateKeyValuePairs,
-  onAddKeyValuePair,
-  onRemoveKeyValuePair,
   onBodyChange,
 }) => {
   const tabs = [
@@ -45,8 +43,8 @@ export const RequestTabs: React.FC<RequestTabsProps> = ({
           items={request.params}
           title="Query Parameters"
           onUpdateItem={onUpdateKeyValuePairs}
-          onAddItem={onAddKeyValuePair}
-          onRemoveItem={onRemoveKeyValuePair}
+          // onAddItem={onAddKeyValuePair}
+          // onRemoveItem={onRemoveKeyValuePair}
         />
       ),
     },
@@ -59,8 +57,8 @@ export const RequestTabs: React.FC<RequestTabsProps> = ({
           items={request.auth}
           title="Authorization Headers"
           onUpdateItem={onUpdateKeyValuePairs}
-          onAddItem={onAddKeyValuePair}
-          onRemoveItem={onRemoveKeyValuePair}
+          // onAddItem={onAddKeyValuePair}
+          // onRemoveItem={onRemoveKeyValuePair}
         />
       ),
     },
@@ -73,8 +71,8 @@ export const RequestTabs: React.FC<RequestTabsProps> = ({
           items={request.headers}
           title="Request Headers"
           onUpdateItem={onUpdateKeyValuePairs}
-          onAddItem={onAddKeyValuePair}
-          onRemoveItem={onRemoveKeyValuePair}
+          // onAddItem={onAddKeyValuePair}
+          // onRemoveItem={onRemoveKeyValuePair}
         />
       ),
     },
